@@ -1,0 +1,2 @@
+# Required by packet_sniffer.py. port_scanner.py uses Python's standard library only.
+scapy>=2.5,<3
