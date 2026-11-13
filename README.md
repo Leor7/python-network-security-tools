@@ -87,7 +87,73 @@ python port_scanner.py --help
 
 ### 2. Packet sniffer
 
-On Windows, first install Npcap and open VS Code or PowerShell **as Administrator**. Then run:
+On Windows, first install Npcap and open VS Code or PowerShell **as Administrator**. 
+
+## Windows Setup: Installing Scapy and Npcap
+
+The port scanner uses Python's built-in libraries, but the packet sniffer requires **Scapy** and **Npcap** to capture network traffic on Windows.
+
+### Step 1: Install Python Dependencies
+
+Open the project folder in VS Code and run the following command in the PowerShell terminal:
+
+`python -m pip install -r requirements.txt`
+
+Alternatively, install Scapy directly:
+
+`python -m pip install scapy`
+
+### Step 2: Verify Scapy Installation
+
+Check that Scapy installed successfully:
+
+`python -m pip show scapy`
+
+You should see the installed version and package information.
+
+### Step 3: Install Npcap (Windows Only)
+
+Scapy requires Npcap for packet capturing on Windows.
+
+1. Visit [Npcap's official website](https://npcap.com/#download).
+2. Download and run the Npcap installer.
+3. Follow the installation instructions using the default settings.
+4. Close VS Code and reopen it as Administrator if packet capture permissions are required.
+
+### Step 4: Run the Packet Sniffer
+
+Open the VS Code terminal and run:
+
+`python packet_sniffer.py -c 20`
+
+This captures up to 20 packets and then stops.
+
+To capture TCP traffic only, run:
+
+`python packet_sniffer.py -c 20 -f "tcp"`
+
+Generate some network traffic by opening a website while the sniffer is running. Press `Ctrl+C` to stop capturing manually.
+
+### Troubleshooting: ModuleNotFoundError
+
+If you encounter:
+
+`ModuleNotFoundError: No module named 'scapy'`
+
+Python cannot locate Scapy in the environment running your script.
+
+**Solution:**
+
+1. Run `python -m pip install scapy`.
+2. Verify installation with `python -m pip show scapy`.
+3. Make sure VS Code is using the same Python interpreter where Scapy was installed.
+4. Restart the terminal and run the script again.
+
+**Important:** If you use the `-i` argument to select a network interface, replace `INTERFACE_NAME` with an actual interface. Otherwise, omit `-i` and let Scapy use its default interface.
+
+**Ethical Use:** Capture traffic only on networks you own or have permission to monitor.
+
+Then run:
 
 ```powershell
 python packet_sniffer.py -c 20
