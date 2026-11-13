@@ -1,0 +1,36 @@
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build and packaging outputs
+build/
+dist/
+*.egg-info/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Sensitive/local configuration
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+
+# Captures and local reports (may contain sensitive information)
+*.pcap
+*.pcapng
+captures/
+reports/
